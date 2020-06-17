@@ -2,11 +2,27 @@
     <string name="app_name">MyExpense</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+
+    <string name="signin_fragment_label">SignIn Fragment</string>
+    <string name="txt_ViewTitleLogin">SignIn</string>
+    <string name="txt_Email">Email</string>
+    <string name="buttonLogin">Login</string>
+    <string name="txt_Password">Password</string>
+    <string name="txt_userName">Username</string>
+    <string name="txt_SignUp">or SignUp here</string>
+
+    <string name="txt_ViewTitleSignup">SignUp</string>
+    <string name="signup_fragment_label">SignUp Fragment</string>
+    <string name="txt_signup_button">Create User</string>
+
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="txt_ViewTitleConfirmation">Email Confirmation</string>
+    <string name="confirmation_code">Confirmation Code</string>
+    <string name="Confirm">Confirm</string>
+
+    <!-- MAINMENU strings -->
+
+
 </resources>

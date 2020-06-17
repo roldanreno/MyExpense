@@ -1,8 +1,14 @@
 package com.example.myexpense;
 
+import android.app.Application;
 import android.os.Bundle;
 
+import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -35,12 +41,28 @@ public class MainActivity extends AppCompatActivity {
         });
 
         try {
+            // Add these lines to add the AWSApiPlugin plugins
+            Amplify.addPlugin(new AWSApiPlugin());
+            Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.configure(getApplicationContext());
+
+            Amplify.Auth.fetchAuthSession(
+                    result -> Log.i("AmplifyQuickstart", result.toString()),
+                    error -> Log.e("AmplifyQuickstart", error.toString())
+            );
 
             Log.i("MyAmplifyApp", "Initialized Amplify");
         } catch (AmplifyException error) {
             Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
         }
+
+        /*Amplify.Auth.confirmSignUp(
+                "username",
+                "128737",
+                result -> Log.i("AuthQuickstart", result.isSignUpComplete() ? "Confirm signUp succeeded" : "Confirm sign up not complete"),
+                error -> Log.e("AuthQuickstart", error.toString())
+        );*/
+
     }
 
     @Override
@@ -63,5 +85,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class MyAmplifyApp extends Application {
+        @Override
+        public void onCreate() {
+            super.onCreate();
+
+            try {
+                // Add these lines to add the AWSApiPlugin plugins
+                Amplify.addPlugin(new AWSApiPlugin());
+                Amplify.configure(getApplicationContext());
+
+                Log.i("MyAmplifyApp", "Initialized Amplify");
+            } catch (AmplifyException error) {
+                Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+            }
+        }
     }
 }

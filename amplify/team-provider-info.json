@@ -10,6 +10,11 @@
             "StackName": "amplify-myexpense-dev-202906",
             "StackId": "arn:aws:cloudformation:us-east-1:938667757389:stack/amplify-myexpense-dev-202906/2b0c9bc0-ac4c-11ea-b77e-0a200f00c284",
             "AmplifyAppId": "d1dv019ejfjgq3"
+        },
+        "categories": {
+            "auth": {
+                "myexpense53a79e6c": {}
+            }
         }
     }
 }
